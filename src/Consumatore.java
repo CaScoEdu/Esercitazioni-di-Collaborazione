@@ -17,14 +17,10 @@ public class Consumatore implements Runnable {
 
             while (true) {
 
-                buffer.DEPOSITATO.WAIT();
+                final Messaggio MESSAGGIO = buffer.preleva();
 
-                Messaggio MESSAGGIO = buffer.messaggio;
                 MESSAGGIO.setConsumatore(nome);
-                MESSAGGIO.setStato("prelevato ");
                 System.out.println((MESSAGGIO.toString()));
-
-                buffer.PRELEVATO.SIGNAL();
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

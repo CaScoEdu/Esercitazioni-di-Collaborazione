@@ -2,7 +2,8 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        final Buffer BUFFER = new Buffer();
+        final int DIMENSIONE_BUFFER = 3;
+        final Buffer BUFFER = new Buffer(DIMENSIONE_BUFFER);
 
         final int NUMERO_CONSUMATORI = 2;
         for (int i = 1; i <= NUMERO_CONSUMATORI; i++)

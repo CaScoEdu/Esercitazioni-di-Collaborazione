@@ -1,8 +1,39 @@
+import java.util.ArrayList;
+
 public class Buffer {
 
-    public Messaggio messaggio; //
+    private int dimensioneBuffer;
 
-    public final SemaforoMutex PRELEVATO = new SemaforoMutex(1); // via libera al produttore
-    public final SemaforoMutex DEPOSITATO = new SemaforoMutex(0); // blocca il consumatore
+    public Buffer(int dimensioneBuffer) {
+        this.dimensioneBuffer = dimensioneBuffer;
+    }
 
+    private ArrayList<Messaggio> MESSAGGI = new ArrayList<Messaggio>();
+
+    public synchronized void deposita(Messaggio messaggio) throws InterruptedException{
+
+        while (MESSAGGI.size() == dimensioneBuffer)
+            wait();
+
+        MESSAGGI.add(messaggio);
+
+        messaggio.setStato("depositato");
+
+        notifyAll();
+    }
+
+    public synchronized Messaggio  preleva() throws InterruptedException{
+
+        while (MESSAGGI.size() == 0)
+            wait();
+
+        final Messaggio MESSAGGIO = MESSAGGI.removeFirst();
+
+        MESSAGGIO.setStato("prelevato");
+
+        notifyAll();
+
+        return MESSAGGIO;
+
+    }
 }

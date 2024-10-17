@@ -22,14 +22,10 @@ public class Produttore implements Runnable {
 
                 Messaggio MESSAGGIO = new Messaggio(nome);
 
-                buffer.PRELEVATO.WAIT();
+                buffer.deposita(MESSAGGIO);
 
-                MESSAGGIO.setStato("depositato");
-
-                buffer.messaggio = MESSAGGIO;
                 System.out.println(MESSAGGIO.toString());
 
-                buffer.DEPOSITATO.SIGNAL();
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
