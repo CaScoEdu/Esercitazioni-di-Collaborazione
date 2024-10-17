@@ -1,4 +1,4 @@
-public class Messaggio {
+public class Panino {
 
     private static int progressivo = 0;
     private int id;
@@ -6,7 +6,7 @@ public class Messaggio {
     private String produttore;
     private String consumatore;
     
-    public Messaggio(String produttore) {
+    public Panino(String produttore) {
         this.id= ++progressivo;
         this.produttore = produttore;
     }
@@ -21,7 +21,7 @@ public class Messaggio {
 
     @Override
     public String toString() {
-        return "Messaggio [id=" + id + ", stato=" + stato + ",  produttore=" + produttore
+        return "Panino [id=" + id + ", stato=" + stato + ",  produttore=" + produttore
                 + ", consumatore=" + consumatore + "]";
     } 
     

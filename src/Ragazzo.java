@@ -1,13 +1,13 @@
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class Consumatore implements Runnable {
+public class Ragazzo implements Runnable {
 
     private String nome;
     private Buffer buffer;
 
     // costruttore del consumatore
-    public Consumatore (String nome, Buffer buffer) {
+    public Ragazzo (String nome, Buffer buffer) {
         this.nome = nome;
         this.buffer = buffer;
     }
@@ -21,12 +21,13 @@ public class Consumatore implements Runnable {
 
             while (true) {
 
-                TimeUnit.SECONDS.sleep(RANDOM.nextInt(5));
+                TimeUnit.SECONDS.sleep(RANDOM.nextInt(10));
 
-                final Messaggio MESSAGGIO = buffer.preleva();
+                final Panino PANINO = buffer.preleva();
 
-                MESSAGGIO.setConsumatore(nome);
-                System.out.println((MESSAGGIO.toString()));
+                PANINO.setConsumatore(nome);
+
+                System.out.println((PANINO.toString()));
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

@@ -8,32 +8,32 @@ public class Buffer {
         this.dimensioneBuffer = dimensioneBuffer;
     }
 
-    private ArrayList<Messaggio> MESSAGGI = new ArrayList<Messaggio>();
+    private ArrayList<Panino> PANINI = new ArrayList<Panino>();
 
-    public synchronized void deposita(Messaggio messaggio) throws InterruptedException{
+    public synchronized void deposita(Panino panino) throws InterruptedException{
 
-        while (MESSAGGI.size() == dimensioneBuffer)
+        while (PANINI.size() == dimensioneBuffer)
             wait();
 
-        MESSAGGI.add(messaggio);
+        PANINI.add(panino);
 
-        messaggio.setStato("depositato");
+        panino.setStato("depositato");
 
         notifyAll();
     }
 
-    public synchronized Messaggio  preleva() throws InterruptedException{
+    public synchronized Panino  preleva() throws InterruptedException{
 
-        while (MESSAGGI.size() == 0)
+        while (PANINI.size() == 0)
             wait();
 
-        final Messaggio MESSAGGIO = MESSAGGI.removeFirst();
+        final Panino PANINO = PANINI.removeFirst();
 
-        MESSAGGIO.setStato("prelevato ");
+        PANINO.setStato("prelevato ");
 
         notifyAll();
 
-        return MESSAGGIO;
+        return PANINO;
 
     }
 }

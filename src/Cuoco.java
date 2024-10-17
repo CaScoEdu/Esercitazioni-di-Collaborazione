@@ -1,13 +1,13 @@
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class Produttore implements Runnable {
+public class Cuoco implements Runnable {
 
     private String nome;
     private Buffer buffer;
 
     // costruttore del produttore
-    public Produttore(String nome, Buffer buffer) {
+    public Cuoco(String nome, Buffer buffer) {
         this.nome = nome;
         this.buffer = buffer;
     }
@@ -19,17 +19,17 @@ public class Produttore implements Runnable {
 
             final Random RANDOM = new Random();
 
-            final int NUMERO_MESSAGGI = 3;
+            final int NUMERO_PANINI = 5;
 
-            for (int i = 1; i <= NUMERO_MESSAGGI; i++) {              
+            for (int i = 1; i <= NUMERO_PANINI; i++) {              
 
                 TimeUnit.SECONDS.sleep(RANDOM.nextInt(5));
 
-                Messaggio MESSAGGIO = new Messaggio(nome);
+                Panino PANINO = new Panino(nome);
 
-                buffer.deposita(MESSAGGIO);
+                buffer.deposita(PANINO);
 
-                System.out.println(MESSAGGIO.toString());
+                System.out.println(PANINO.toString());
 
             }
         } catch (InterruptedException e) {
