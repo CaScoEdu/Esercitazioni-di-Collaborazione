@@ -1,3 +1,5 @@
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Consumatore implements Runnable {
 
@@ -15,7 +17,11 @@ public class Consumatore implements Runnable {
 
         try {
 
+            final Random RANDOM = new Random();
+
             while (true) {
+
+                TimeUnit.SECONDS.sleep(RANDOM.nextInt(5));
 
                 final Messaggio MESSAGGIO = buffer.preleva();
 

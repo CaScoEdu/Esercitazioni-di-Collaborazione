@@ -29,7 +29,7 @@ public class Buffer {
 
         final Messaggio MESSAGGIO = MESSAGGI.removeFirst();
 
-        MESSAGGIO.setStato("prelevato");
+        MESSAGGIO.setStato("prelevato ");
 
         notifyAll();
 

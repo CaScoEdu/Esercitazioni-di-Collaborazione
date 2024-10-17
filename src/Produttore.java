@@ -1,4 +1,5 @@
-
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class Produttore implements Runnable {
 
@@ -16,9 +17,13 @@ public class Produttore implements Runnable {
 
         try {
 
+            final Random RANDOM = new Random();
+
             final int NUMERO_MESSAGGI = 3;
 
-            for (int i = 1; i <= NUMERO_MESSAGGI; i++) {
+            for (int i = 1; i <= NUMERO_MESSAGGI; i++) {              
+
+                TimeUnit.SECONDS.sleep(RANDOM.nextInt(5));
 
                 Messaggio MESSAGGIO = new Messaggio(nome);
 
