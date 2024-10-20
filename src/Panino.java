@@ -1,27 +1,28 @@
 public class Panino {
 
     private static int progressivo = 0;
-    private int id;
-    private String stato;
-    private String produttore;
-    private String consumatore;
+
+    final private int ID;
+    private String stato = "creato";
+    final private String PRODUTTORE;
+    private String consumatore = null;
     
-    public Panino(String produttore) {
-        this.id= ++progressivo;
-        this.produttore = produttore;
+    public Panino(final String PRODUTTORE) {
+        this.ID= ++progressivo;
+        this.PRODUTTORE = PRODUTTORE;
     }
 
-    public void setConsumatore(String consumatore) {
-        this.consumatore = consumatore;
+    public void setConsumatore(final String CONSUMATORE) {
+        this.consumatore = CONSUMATORE;
     }
 
-    public void setStato(String stato) {
-        this.stato = stato;
+    public void setStato(final String STATO) {
+        this.stato = STATO;
     }
 
     @Override
     public String toString() {
-        return "Panino [id=" + id + ", stato=" + stato + ",  produttore=" + produttore
+        return "Panino [id=" + ID + ", stato=" + stato + ",  produttore=" + PRODUTTORE
                 + ", consumatore=" + consumatore + "]";
     } 
     

@@ -3,13 +3,13 @@ import java.util.concurrent.TimeUnit;
 
 public class Cuoco implements Runnable {
 
-    private String nome;
-    private Buffer buffer;
+    final private String NOME;
+    final private Buffer BUFFER;
 
     // costruttore del produttore
-    public Cuoco(String nome, Buffer buffer) {
-        this.nome = nome;
-        this.buffer = buffer;
+    public Cuoco(final String NOME, final Buffer BUFFER) {
+        this.NOME = NOME;
+        this.BUFFER = BUFFER;
     }
 
     @Override
@@ -25,9 +25,9 @@ public class Cuoco implements Runnable {
 
                 TimeUnit.SECONDS.sleep(RANDOM.nextInt(5));
 
-                Panino PANINO = new Panino(nome);
+                Panino PANINO = new Panino(NOME);
 
-                buffer.deposita(PANINO);
+                BUFFER.deposita(PANINO);
 
                 System.out.println(PANINO.toString());
 

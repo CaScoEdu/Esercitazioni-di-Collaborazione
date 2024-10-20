@@ -2,22 +2,22 @@ import java.util.ArrayList;
 
 public class Buffer {
 
-    private int dimensioneBuffer;
+    final private int DIMENSIONE_BUFFER;
 
-    public Buffer(int dimensioneBuffer) {
-        this.dimensioneBuffer = dimensioneBuffer;
+    public Buffer(final int DIMENSIONE_BUFFER) {
+        this.DIMENSIONE_BUFFER = DIMENSIONE_BUFFER;
     }
 
     private ArrayList<Panino> PANINI = new ArrayList<Panino>();
 
-    public synchronized void deposita(Panino panino) throws InterruptedException{
+    public synchronized void deposita(final Panino PANINO) throws InterruptedException{
 
-        while (PANINI.size() == dimensioneBuffer)
+        while (PANINI.size() == DIMENSIONE_BUFFER)
             wait();
 
-        PANINI.add(panino);
+        PANINI.add(PANINO);
 
-        panino.setStato("depositato");
+        PANINO.setStato("depositato");
 
         notifyAll();
     }
