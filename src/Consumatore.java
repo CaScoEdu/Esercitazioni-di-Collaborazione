@@ -1,13 +1,13 @@
 
 public class Consumatore implements Runnable {
 
-    private String nome;
-    private Buffer buffer;
+    final private String NOME;
+    final private Buffer BUFFER;
 
     // costruttore del consumatore
-    public Consumatore (String nome, Buffer buffer) {
-        this.nome = nome;
-        this.buffer = buffer;
+    public Consumatore (final String NOME, final Buffer BUFFER) {
+        this.NOME = NOME;
+        this.BUFFER = BUFFER;
     }
 
     @Override
@@ -17,14 +17,14 @@ public class Consumatore implements Runnable {
 
             while (true) {
 
-                buffer.DEPOSITATO.WAIT();
+                BUFFER.DEPOSITATO.WAIT();
 
-                Messaggio MESSAGGIO = buffer.messaggio;
-                MESSAGGIO.setConsumatore(nome);
+                Messaggio MESSAGGIO = BUFFER.messaggio;
+                MESSAGGIO.setConsumatore(NOME);
                 MESSAGGIO.setStato("prelevato ");
                 System.out.println((MESSAGGIO.toString()));
 
-                buffer.PRELEVATO.SIGNAL();
+                BUFFER.PRELEVATO.SIGNAL();
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

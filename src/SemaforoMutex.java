@@ -4,8 +4,8 @@ public class SemaforoMutex { // realizzato con un Semaforo Mutex
   
     private int s;   
 
-    public SemaforoMutex(int s) {
-        this.s = s;
+    public SemaforoMutex(final int S) {
+        this.s = S;
     }
 
     public synchronized void WAIT() throws InterruptedException{

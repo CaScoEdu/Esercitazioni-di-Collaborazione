@@ -2,13 +2,13 @@
 
 public class Produttore implements Runnable {
 
-    private String nome;
-    private Buffer buffer;
+    final private String NOME;
+    final private Buffer BUFFER;
 
     // costruttore del produttore
-    public Produttore(String nome, Buffer buffer) {
-        this.nome = nome;
-        this.buffer = buffer;
+    public Produttore(final String NOME, final Buffer BUFFER) {
+        this.NOME = NOME;
+        this.BUFFER = BUFFER;
     }
 
     @Override
@@ -20,16 +20,16 @@ public class Produttore implements Runnable {
 
             for (int i = 1; i <= NUMERO_MESSAGGI; i++) {
 
-                Messaggio MESSAGGIO = new Messaggio(nome);
+                Messaggio MESSAGGIO = new Messaggio(NOME);
 
-                buffer.PRELEVATO.WAIT();
+                BUFFER.PRELEVATO.WAIT();
 
                 MESSAGGIO.setStato("depositato");
 
-                buffer.messaggio = MESSAGGIO;
+                BUFFER.messaggio = MESSAGGIO;
                 System.out.println(MESSAGGIO.toString());
 
-                buffer.DEPOSITATO.SIGNAL();
+                BUFFER.DEPOSITATO.SIGNAL();
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
