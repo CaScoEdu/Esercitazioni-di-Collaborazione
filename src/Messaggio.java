@@ -1,18 +1,19 @@
 public class Messaggio {
 
     private static int progressivo = 0;
-    private int id;
+    final private int ID;
     private String stato;
-    private String produttore;
-    private String consumatore;
+    final private String PRODUTTORE;
+    private String consumatore = "null";
     
-    public Messaggio(String produttore) {
-        this.id= ++progressivo;
-        this.produttore = produttore;
+    public Messaggio(final String PRODUTTORE) {
+        this.ID= ++progressivo;
+        this.stato = "creato";
+        this.PRODUTTORE = PRODUTTORE;
     }
 
-    public void setConsumatore(String consumatore) {
-        this.consumatore = consumatore;
+    public void setConsumatore(final String CONSUMATORE) {
+        this.consumatore = CONSUMATORE;
     }
 
     public void setStato(String stato) {
@@ -21,7 +22,7 @@ public class Messaggio {
 
     @Override
     public String toString() {
-        return "Messaggio [id=" + id + ", stato=" + stato + ",  produttore=" + produttore
+        return "Messaggio [id=" + ID + ", stato=" + stato + ",  produttore=" + PRODUTTORE
                 + ", consumatore=" + consumatore + "]";
     } 
     
