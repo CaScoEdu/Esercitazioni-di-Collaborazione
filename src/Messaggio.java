@@ -16,8 +16,8 @@ public class Messaggio {
         this.consumatore = CONSUMATORE;
     }
 
-    public void setStato(String stato) {
-        this.stato = stato;
+    public void setStato(final String STATO) {
+        this.stato = STATO;
     }
 
     @Override
