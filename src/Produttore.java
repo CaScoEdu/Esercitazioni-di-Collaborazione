@@ -3,13 +3,13 @@ import java.util.concurrent.TimeUnit;
 
 public class Produttore implements Runnable {
 
-    private String nome;
-    private Buffer buffer;
+    final private String NOME;
+    final private Buffer BUFFER;
 
     // costruttore del produttore
-    public Produttore(String nome, Buffer buffer) {
-        this.nome = nome;
-        this.buffer = buffer;
+    public Produttore(final String NOME, final Buffer BUFFER) {
+        this.NOME = NOME;
+        this.BUFFER = BUFFER;
     }
 
     @Override
@@ -25,9 +25,9 @@ public class Produttore implements Runnable {
 
                 TimeUnit.SECONDS.sleep(RANDOM.nextInt(5));
 
-                Messaggio MESSAGGIO = new Messaggio(nome);
+                Messaggio MESSAGGIO = new Messaggio(NOME);
 
-                buffer.deposita(MESSAGGIO);
+                BUFFER.deposita(MESSAGGIO);
 
                 System.out.println(MESSAGGIO.toString());
 
